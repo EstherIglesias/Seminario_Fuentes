@@ -14,9 +14,5 @@ X48074 <- read_excel("48074.xls")
 View(X48074)
 
 library(readxl)
-X10879 <- read_excel("10879.xls")
-View(X10879)
-
-library(readxl)
-X11178 <- read_excel("11178.xls")
-View(X11178)
+X49165 <- read_excel("49165.xls")
+View(X49165)
