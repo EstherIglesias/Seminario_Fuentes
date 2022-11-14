@@ -9,9 +9,15 @@ print(x + y)
 
 # Importación de datos xls.
 library(readxl)
-X48074 <- read_excel("48074.xls")
-View(X48074)
+X48074 <- read_excel("INPUT/DATA/48074.xls")
+48074
+str(48074)
+summary(48074)
+View(48074)
 
 library(readxl)
-X49165 <- read_excel("49165.xls")
-View(X49165)
+X49165 <- read_excel("INPUT/DATA/49165.xls")
+49165
+str(49165)
+summary(49165)
+View(49165)
