@@ -21,3 +21,11 @@ X49165 <- read_excel("INPUT/DATA/49165.xls")
 str(49165)
 summary(49165)
 View(49165)
+
+library(readxl)
+X49165_1_ <- read_excel("input/data/49165 (1).xls")
+View(X49165_1_)
+
+library(readxl)
+X48075_2_ <- read_excel("input/data/48075 (2).xls")
+View(X48075_2_)
