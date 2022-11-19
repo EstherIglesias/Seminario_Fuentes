@@ -18,3 +18,9 @@ summary(X48075_2_)
 View(X48075_2_)
 
 
+# Ponemos las dos tablas para poder trabajar
+
+
+
+
+
