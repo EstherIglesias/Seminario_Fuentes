@@ -22,5 +22,6 @@ View(X48075_2_)
 
 
 
-
+#Acuerdate de hacer pull siempre antes de trabajar por si acaso
+#Tambien de hacer push luego jejeje 
 
