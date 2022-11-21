@@ -18,10 +18,12 @@ summary(X48075_2_)
 View(X48075_2_)
 
 
-# Ponemos las dos tablas para poder trabajar
-
+# Unión de los datos
+library(tidyverse)
+union <- full_join(x= X49165_1_, y=X48075_2_)
 
 
 #Acuerdate de hacer pull siempre antes de trabajar por si acaso
 #Tambien de hacer push luego jejeje 
+
 
