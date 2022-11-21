@@ -22,6 +22,9 @@ summary(Comidaxsexoencolumnas)
 library(tidyverse)
 union <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas)
 
+#otra union de datos señalando las columnas que debe usar:
+library(tidyverse)
+vercomoqueda <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas, by = c("Ambos sexos", "Mujeres", "Hombres"))
 
 #Acuerdate de hacer pull siempre antes de trabajar por si acaso
 #Tambien de hacer push luego jejeje 
