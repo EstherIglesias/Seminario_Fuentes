@@ -2,13 +2,21 @@
 
 # Importación de datos xls.
 
-library(readxl)
-comida <- read_excel("input/data/comida.xls")
-View(comida)
+ #Datos de alimentación:
 
 library(readxl)
-paro <- read_excel("input/data/paro.xls")
-View(paro)
+Comidaxsexoencolumnas <- read_excel("input/data/Comidaxsexoencolumnas.xls", 
+                                      +     col_types = c("text", "numeric", "numeric", 
+                                                          +         "numeric"))
+View(Comidaxsexoencolumnas)
+
+ #Datos de paro:
+
+library(readxl)
+ParoxsexoEncolumnas <- read_excel("input/data/ParoxsexoEncolumnas.xls", 
+                                    +     col_types = c("text", "numeric", "numeric", 
+                                                        +         "numeric"))
+View(ParoxsexoEncolumnas)
 
 #Hacemos un resumen para ver en que se diferencian nuestros datos
 summary(comida)
