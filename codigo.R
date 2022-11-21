@@ -3,20 +3,12 @@
 # Importación de datos xls.
 
 library(readxl)
-X49165_1_ <- read_excel("input/data/49165 (1).xls")
-X49165_1_
-View(X49165_1_)
-str(X49165_1_)
-summary(X49165_1_)
-
+comida <- read_excel("input/data/comida.xls")
+View(comida)
 
 library(readxl)
-X48075_2_ <- read_excel("input/data/48075 (2).xls")
-X48075_2_
-str(X48075_2_)
-summary(X48075_2_)
-View(X48075_2_)
-
+paro <- read_excel("input/data/paro.xls")
+View(paro)
 
 # Unión de los datos
 library(tidyverse)
@@ -28,3 +20,10 @@ union <- full_join(x= X49165_1_, y=X48075_2_)
 library(tidyverse)
 esther <- left_join(x= X49165_1_, y=X48075_2_)
 
+#Hacemos un resumen para ver en que se diferencian nuestros datos
+summary(X49165_1_)
+summary(X48075_2_)
+
+#Debemos hacer un pivot_longer para disminuir el número de columnas y aumentar el número de filas
+X49165_1_%>%
+  pivot_longer(cols = )
