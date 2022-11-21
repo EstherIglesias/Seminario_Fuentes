@@ -25,5 +25,6 @@ union <- full_join(x= X49165_1_, y=X48075_2_)
 
 #Acuerdate de hacer pull siempre antes de trabajar por si acaso
 #Tambien de hacer push luego jejeje 
-
+library(tidyverse)
+esther <- left_join(x= X49165_1_, y=X48075_2_)
 
