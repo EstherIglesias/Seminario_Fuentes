@@ -22,11 +22,15 @@ summary(Comidaxsexoencolumnas)
 library(tidyverse)
 union <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas)
 
+summary(union)
+
 #otra union de datos señalando las columnas que debe usar:
 library(tidyverse)
 vercomoqueda <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas, by = c("Ambos sexos", "Mujeres", "Hombres"))
 
-#Acuerdate de hacer pull siempre antes de trabajar por si acaso
-#Tambien de hacer push luego jejeje 
+#Relación entre la alimentación y el desempleo.
+library(ggplot2)
+ggplot(data = union, mapping = aes(x=  Mujeres, y = Hombres )) + labs(x="Mujeres", y="Hombres", subtitle="relacion paro y alimentación")+ theme_classic()
+
 
 
