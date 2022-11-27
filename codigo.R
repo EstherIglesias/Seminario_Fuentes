@@ -32,5 +32,7 @@ vercomoqueda <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas, by = 
 library(ggplot2)
 ggplot(data = union, mapping = aes(x=  Mujeres, y = Hombres )) + labs(x="Mujeres", y="De 40 a 44 años", subtitle="relacion paro y alimentación")+ theme_classic()
 
-
+#intento grafico
+library(ggplot2)
+ggplot(data = union, mapping = aes(x=  Mujeres, y = Hombres )) + labs(x="Mujeres", y="Hombres", subtitle="relacion paro y alimentación")+ theme_classic()
 
