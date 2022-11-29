@@ -45,4 +45,7 @@ data(union)
 ?union
 str(union)
 
-
+# Definición de las tres mínimas variables en un gráfico
+ggplot(union = mpg, aes(x = Mujeres, y = Hombres))
+#no entiendo nada sooooossss
+#literalmente estoy copiando los apuntes
