@@ -36,3 +36,13 @@ ggplot(data = union, mapping = aes(x=  Mujeres, y = Hombres )) + labs(x="Mujeres
 library(ggplot2)
 ggplot(data = union, mapping = aes(x=  Mujeres, y = Hombres )) + labs(x="Mujeres", y="Hombres", subtitle="relacion paro y alimentación")+ theme_classic()
 
+#no se muy bien que es esto
+library(tidyverse)
+?ggplot2
+# Cargamos los datos
+data(union)
+# reseña del set de datos
+?union
+str(union)
+
+
