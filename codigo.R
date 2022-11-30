@@ -49,3 +49,4 @@ str(union)
 ggplot(union = mpg, aes(x = Mujeres, y = Hombres))
 #no entiendo nada sooooossss
 #literalmente estoy copiando los apuntes
+#Por el amoor de esa mujer, somos dos hobres con un mismo destinoooooooo
