@@ -35,7 +35,7 @@ ggplot(data = union, mapping = aes(Mujeres, Hombres)) + labs(x="Mujeres", y="Hom
 
 #Gráfico relación paro y alimentación:
 library(tidyverse)
-ggplot(data = union) + geom_point(mapping = aes( x = Mujeres, y= Hombres))
+ggplot(data = union) + geom_point(mapping = aes( x = Mujeres, y= Hombres, color= Mujeres))
 #no se muy bien que es esto
 library(tidyverse)
 ?ggplot2
@@ -53,7 +53,7 @@ library("ggplot2")
 
 #Gráfico solo alimentación
 library(tidyverse)
-ggplot(data = Comidaxsexoencolumnas) + geom_point(mapping = aes( x = Mujeres, y= Hombres))
+ggplot(data = Comidaxsexoencolumnas) + geom_smooth(mapping = aes( x = Mujeres, y= Hombres))
 
 #Gráfico solo paro.
 library(tidyverse)
