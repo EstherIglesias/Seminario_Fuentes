@@ -28,11 +28,6 @@ summary(union)
 library(tidyverse)
 vercomoqueda <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas, by = c("Ambos sexos", "Mujeres", "Hombres"))
 
-#intento grafico
-library(tidyverse)
-library("ggplot2")
-ggplot(data = union, mapping = aes(Mujeres, Hombres)) + labs(x="Mujeres", y="Hombres", subtitle="relacion paro y alimentación")+ theme_classic()
-
 #Gráfico relación paro y alimentación:
 library(tidyverse)
 ggplot(data = union) + geom_point(mapping = aes( x = Mujeres, y= Hombres, color= Mujeres))
@@ -58,6 +53,10 @@ ggplot(data = Comidaxsexoencolumnas) + geom_smooth(mapping = aes( x = Mujeres, y
 #Gráfico solo paro.
 library(tidyverse)
 ggplot(data = ParoxsexoEncolumnas) + geom_point(mapping = aes( x = Mujeres, y= Hombres))
+
+#otro intento de gráfico con más cosas
+library(tidyverse)
+ggplot(data = union) + geom_point(mapping = aes( x = Mujeres, y= Hombres)) + labs(title="relación paro y alimentación", x="Datos mujeres", y= "Datos hombres" ) 
 
 
 
