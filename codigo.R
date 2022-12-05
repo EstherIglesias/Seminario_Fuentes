@@ -28,16 +28,12 @@ summary(union)
 library(tidyverse)
 vercomoqueda <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas, by = c("Ambos sexos", "Mujeres", "Hombres"))
 
-#Relación entre la alimentación y el desempleo.
-library(ggplot2)
-ggplot(data = union, mapping = aes(x=  Mujeres, y = Hombres )) + labs(x="Mujeres", y="De 40 a 44 años", subtitle="relacion paro y alimentación")+ theme_classic()
-
 #intento grafico
 library(tidyverse)
 library("ggplot2")
 ggplot(data = union, mapping = aes(Mujeres, Hombres)) + labs(x="Mujeres", y="Hombres", subtitle="relacion paro y alimentación")+ theme_classic()
 
-#otro intento de gráfico:
+#Gráfico relación paro y alimentación:
 library(tidyverse)
 ggplot(data = union) + geom_point(mapping = aes( x = Mujeres, y= Hombres))
 #no se muy bien que es esto
@@ -54,6 +50,14 @@ ggplot(union = mpg, aes(x = Mujeres, y = Hombres))
 
 install.packages("ggplot2")
 library("ggplot2")
+
+#Gráfico solo alimentación
+library(tidyverse)
+ggplot(data = Comidaxsexoencolumnas) + geom_point(mapping = aes( x = Mujeres, y= Hombres))
+
+#Gráfico solo paro.
+library(tidyverse)
+ggplot(data = ParoxsexoEncolumnas) + geom_point(mapping = aes( x = Mujeres, y= Hombres))
 
 
 
