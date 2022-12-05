@@ -1,17 +1,18 @@
  
-
 # Importación de datos xls.
 
  #Datos de alimentación:
 
 library(readxl)
-Comidaxsexoencolumnas <- read_excel("input/data/Comidaxsexoencolumnas.xls", col_types = c("text", "numeric", "numeric", "numeric"))
+Comidaxsexoencolumnas <- read_excel("input/data/Comidaxsexoencolumnas.xls", 
+                                    col_types = c("text", "numeric", "numeric", "numeric"))
 View(Comidaxsexoencolumnas)
 
  #Datos de paro:
 
 library(readxl)
-ParoxsexoEncolumnas <- read_excel("input/data/ParoxsexoEncolumnas.xls", col_types = c("text", "numeric", "numeric", "numeric"))
+ParoxsexoEncolumnas <- read_excel("input/data/ParoxsexoEncolumnas.xls", 
+                                  col_types = c("text", "numeric", "numeric", "numeric"))
 View(ParoxsexoEncolumnas)
 
 #Hacemos un resumen para ver en que se diferencian nuestros datos
@@ -26,11 +27,14 @@ summary(union)
 
 #otra union de datos señalando las columnas que debe usar:
 library(tidyverse)
-vercomoqueda <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas, by = c("Ambos sexos", "Mujeres", "Hombres"))
+vercomoqueda <- 
+  full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas, 
+            by = c("Ambos sexos", "Mujeres", "Hombres"))
 
 #Gráfico relación paro y alimentación:
 library(tidyverse)
-ggplot(data = union) + geom_point(mapping = aes( x = Mujeres, y= Hombres, color= Mujeres))
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Mujeres, y= Hombres, color= Mujeres))
 #no se muy bien que es esto
 library(tidyverse)
 ?ggplot2
@@ -48,15 +52,22 @@ library("ggplot2")
 
 #Gráfico solo alimentación
 library(tidyverse)
-ggplot(data = Comidaxsexoencolumnas) + geom_smooth(mapping = aes( x = Mujeres, y= Hombres))
+ggplot(data = Comidaxsexoencolumnas) + 
+  geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
+  labs(title = "alimentación según sexo", x="Mujeres", y="Hombres")
 
 #Gráfico solo paro.
 library(tidyverse)
-ggplot(data = ParoxsexoEncolumnas) + geom_point(mapping = aes( x = Mujeres, y= Hombres))
+ggplot(data = ParoxsexoEncolumnas) + 
+  geom_point(mapping = aes( x = Mujeres, y= Hombres))+
+  labs(title = "paro según sexo", x="Mujeres", y="Hombres")
+
 
 #otro intento de gráfico con más cosas
 library(tidyverse)
-ggplot(data = union) + geom_point(mapping = aes( x = Mujeres, y= Hombres)) + labs(title="relación paro y alimentación", x="Datos mujeres", y= "Datos hombres" ) 
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
+  labs(title="relación paro y alimentación", x="Mujeres", y= "Hombres" ) 
 
 
 
