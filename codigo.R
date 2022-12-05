@@ -33,9 +33,13 @@ library(ggplot2)
 ggplot(data = union, mapping = aes(x=  Mujeres, y = Hombres )) + labs(x="Mujeres", y="De 40 a 44 años", subtitle="relacion paro y alimentación")+ theme_classic()
 
 #intento grafico
-library(ggplot2)
-ggplot(data = union, mapping = aes(x=  Mujeres, y = Hombres )) + labs(x="Mujeres", y="Hombres", subtitle="relacion paro y alimentación")+ theme_classic()
+library(tidyverse)
+library("ggplot2")
+ggplot(data = union, mapping = aes(Mujeres, Hombres)) + labs(x="Mujeres", y="Hombres", subtitle="relacion paro y alimentación")+ theme_classic()
 
+#otro intento de gráfico:
+library(tidyverse)
+ggplot(data = union) + geom_point(mapping = aes( x = Mujeres, y= Hombres))
 #no se muy bien que es esto
 library(tidyverse)
 ?ggplot2
@@ -47,6 +51,9 @@ str(union)
 
 # Definición de las tres mínimas variables en un gráfico
 ggplot(union = mpg, aes(x = Mujeres, y = Hombres))
+
+install.packages("ggplot2")
+library("ggplot2")
 
 
 
