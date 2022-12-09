@@ -87,3 +87,11 @@ library(tidyverse)
 ggplot(data = ParoxsexoEncolumnas) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres))
 
+library(tidyverse)
+ggplot(data = ParoxsexoEncolumnas) + 
+  geom_point(mapping = aes( x = Mujeres, y= ...1, color= color))
+
+
+
+
+
