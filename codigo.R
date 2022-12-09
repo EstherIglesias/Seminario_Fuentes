@@ -35,6 +35,7 @@ vercomoqueda <-
 library(tidyverse)
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Mujeres, y= Hombres, color= Mujeres))
+
 #no se muy bien que es esto
 library(tidyverse)
 ?ggplot2
@@ -69,5 +70,20 @@ ggplot(data = union) +
   geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
   labs(title="relación paro y alimentación", x="Mujeres", y= "Hombres" ) 
 
+#Gráfico de barras que no entiendo jejej
+ggplot(data = union, aes(x = ...1)) +
+  geom_bar()
 
+library(tidyverse)
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Mujeres, y= ...1, color= Mujeres))
+
+library(tidyverse)
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres))
+
+
+library(tidyverse)
+ggplot(data = ParoxsexoEncolumnas) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres))
 
