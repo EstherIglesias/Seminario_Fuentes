@@ -21,7 +21,6 @@ Vamos a cargar nuestros datos:
 ```{r}
 library(datasets)
 data("Comidaxsexoencolumnas")
-summary(Comidaxsexoencolumnas)
 ```
 
 
