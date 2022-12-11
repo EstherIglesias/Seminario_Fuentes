@@ -70,9 +70,31 @@ ggplot(data = union) +
   geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
   labs(title="relación paro y alimentación", x="Mujeres", y= "Hombres" ) 
 
-#Gráfico de barras que no entiendo jejej
-ggplot(data = union, aes(x = ...1)) +
-  geom_bar()
+
+
+
+library(tidyverse)
+ggplot(data = ParoxsexoEncolumnas) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres)) +
+  labs(title = "Paro en hombres por edades", x="Hombres", y="Edad")
+
+library(tidyverse)
+ggplot(data = ParoxsexoEncolumnas) + 
+  geom_point(mapping = aes( x = Mujeres, y= ...1, color = Mujeres)) +
+  labs(title = "Paro en mujeres por edades", x="Mujeres", y="Edad")
+
+
+library(tidyverse)
+ggplot(data = Comidaxsexoencolumnas) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres)) +
+  labs(title = "Alimentación en hombres", x="Hombres", y="Edad")
+
+library(tidyverse)
+ggplot(data = Comidaxsexoencolumnas) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Mujeres)) +
+  labs(title = "Alimentación en mujeres", x="Mujeres", y="Edad")
+
+
 
 library(tidyverse)
 ggplot(data = union) + 
@@ -81,17 +103,4 @@ ggplot(data = union) +
 library(tidyverse)
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres))
-
-
-library(tidyverse)
-ggplot(data = ParoxsexoEncolumnas) + 
-  geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres))
-
-library(tidyverse)
-ggplot(data = ParoxsexoEncolumnas) + 
-  geom_point(mapping = aes( x = Mujeres, y= ...1, color= color))
-
-
-
-
 
