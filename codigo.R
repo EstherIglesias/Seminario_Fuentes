@@ -37,7 +37,7 @@ library(tidyverse)
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Mujeres, y= Hombres, color= Mujeres))
 
-#no se muy bien que es esto
+#no se muy bien que es esto:
 library(tidyverse)
 ?ggplot2
 # Cargamos los datos
