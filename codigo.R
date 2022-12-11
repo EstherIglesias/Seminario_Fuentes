@@ -37,17 +37,7 @@ library(tidyverse)
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Mujeres, y= Hombres, color= Mujeres))
 
-#no se muy bien que es esto
-library(tidyverse)
-?ggplot2
-# Cargamos los datos
-data(union)
-# reseña del set de datos
-?union
-str(union)
 
-# Definición de las tres mínimas variables en un gráfico
-ggplot(union = mpg, aes(x = Mujeres, y = Hombres))
 
 install.packages("ggplot2")
 library("ggplot2")

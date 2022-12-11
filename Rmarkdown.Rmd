@@ -19,5 +19,14 @@ Nuestro documento Rmarkdown.
 Vamos a cargar nuestros datos:
 
 ```{r}
+data(input/data/Comidaxsexoencolumnas.xls)
+?Comidaxsexoencolumnas
 
+
+```
+
+```{r}
+data(union)
+?union
+str(union)
 ```
