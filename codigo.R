@@ -15,7 +15,7 @@ ParoxsexoEncolumnas <- read_excel("input/data/ParoxsexoEncolumnas.xls",
                                   col_types = c("text", "numeric", "numeric", "numeric"))
 View(ParoxsexoEncolumnas)
 
-#Hacemos un resumen para ver en que se diferencian nuestros datos
+#Hacemos un resumen para ver en que se diferencian nuestros datos:
 summary(ParoxsexoEncolumnas)
 summary(Comidaxsexoencolumnas)
 
@@ -23,6 +23,7 @@ summary(Comidaxsexoencolumnas)
 library(tidyverse)
 union <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas)
 
+#Hacemos un resumen de los datos que hemos obtenido al hacer la unión de los datos:
 summary(union)
 
 #otra union de datos señalando las columnas que debe usar:
