@@ -1,20 +1,26 @@
 ---
-title: "Seminario"
-author: "Lucía y Esther"
+title: "Paro y Alimentación"
+author: "Esther Iglesias Gutiérrez y Lucía Segura Benito"
 date: "`r Sys.Date()`"
 output: 
   html_document:
+    theme: readable
     toc: yes
+    toc_float: yes
 long: es-ES
 ---
 
-#Título del documento
-##Subtítulo
-###Subsubtítulo
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Paro y Alimentación
+
+Queremos comprobar si hay algún tipo de relación entre el paro y la mala alimentación.
 
 [Enlace de nuestro repositorio de Github](https://github.com/EstherIglesias/Seminario_Fuentes)
 
-Nuestro documento Rmarkdown.
+![](imagen_sana.jpg)
 
 Vamos a cargar nuestros datos:
 
@@ -23,6 +29,7 @@ Vamos a cargar nuestros datos:
 
 
 # Importación de datos xls.
+
 
  #Datos de alimentación:
 
@@ -35,17 +42,21 @@ Comidaxsexoencolumnas <- read_excel("input/data/Comidaxsexoencolumnas.xls",
 View(Comidaxsexoencolumnas)
 ```
 
-```{r include=TRUE}
- #Datos de paro:
 
+
+```{r include=FALSE, eval=FALSE}                                  
+#View(Comidaxsexoencolumnas)
+
+```
+
+```{r, warning=FALSE, message=FALSE}
+#Datos de paro:
 library(readxl)
 ParoxsexoEncolumnas <- read_excel("input/data/ParoxsexoEncolumnas.xls", 
                                   col_types = c("text", "numeric", "numeric", "numeric"))
 ```
 
-```{r include=TRUE}                                
-View(ParoxsexoEncolumnas)
-```
+
 
 ```{r include=TRUE}
 #Hacemos un resumen para ver en que se diferencian nuestros datos:
@@ -89,54 +100,181 @@ library(tidyverse)
 ggplot(data = Comidaxsexoencolumnas) + 
   geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
   labs(title = "alimentación según sexo", x="Mujeres", y="Hombres")
+```
 
 
+
+# Tabla comida
+```{r include=TRUE}
+# Mirarel paquete DT (https://rstudio.github.io/DT/)
+summary(Comidaxsexoencolumnas)
+```
+
+# Tabla Paro 
+```{r include=TRUE}
+summary(ParoxsexoEncolumnas)
+```
+
+Hacemos una unión de los datos
+```{r include=FALSE}
+# Unión de los datos
+library(tidyverse)
+union <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas)
+```
+
+#Tabla de union de datos de alimentación y paro  
+```{r include=TRUE}
+#Hacemos un resumen de los datos que hemos obtenido al hacer la unión de los datos:
+summary(union)
+```
+
+```{r include=FALSE}
+#otra union de datos señalando las columnas que debe usar:
+library(tidyverse)
+vercomoqueda <- 
+  full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas, 
+            by = c("Ambos sexos", "Mujeres", "Hombres"))
+
+#Gráfico relación paro y alimentación:
+library(tidyverse)
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Mujeres, y = Hombres, color = Mujeres))
+```
+
+```{r include=FALSE}
+#install.packages("ggplot2")
+library("ggplot2")
+```
+
+#GRÁFICOS  
+Con los datos obtenidos creamos disintos gráficos para poder llegar a una conclusión.   
+##Gráfico de la alimentación en relación al sexo  
+
+```{r echo=TRUE, warning=FALSE}
+
+library(tidyverse)
+ggplot(data = Comidaxsexoencolumnas) + 
+  geom_point(mapping = aes( x = Mujeres, y = Hombres)) + 
+  labs(title = "alimentación según sexo", x = "Mujeres", y = "Hombres")
+```
+
+## Gráfico de la alimentación en hombres   
+```{r echo=TRUE, warning=FALSE}
+library(tidyverse)
+ggplot(data = Comidaxsexoencolumnas) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres)) +
+  labs(title = "Alimentación en hombres", x="Hombres", y="Alimentos")
+```
+
+##Gráfico de la alimentación en mujeres  
+
+```{r echo=TRUE, warning=FALSE}
+library(tidyverse)
+ggplot(data = Comidaxsexoencolumnas) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Mujeres)) +
+  labs(title = "Alimentación en mujeres", x="Mujeres", y="Alimentos")
+```
+
+
+##Gráfico del paro en relación al sexo  
+  
+```{r echo=TRUE, warning=FALSE}
 library(tidyverse)
 ggplot(data = ParoxsexoEncolumnas) + 
   geom_point(mapping = aes( x = Mujeres, y= Hombres))+
   labs(title = "paro según sexo", x="Mujeres", y="Hombres")
+```
 
 
-
+```{r echo=TRUE, warning=FALSE}
 library(tidyverse)
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
-  labs(title="relación paro y alimentación", x="Mujeres", y= "Hombres" ) 
+  labs(title="relación paro y alimentación", x="Mujeres", y= "Hombres" )
+```
 
 
 
-
+##Gráfico del paro en hombres en relación con su edad  
+```{r echo=TRUE, warning=FALSE}
 library(tidyverse)
 ggplot(data = ParoxsexoEncolumnas) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres)) +
   labs(title = "Paro en hombres por edades", x="Hombres", y="Edad")
+```
 
+##Gráfico del paro en mujeres en relación a su edad  
+```{r echo=TRUE, warning=FALSE}
 library(tidyverse)
 ggplot(data = ParoxsexoEncolumnas) + 
   geom_point(mapping = aes( x = Mujeres, y= ...1, color = Mujeres)) +
   labs(title = "Paro en mujeres por edades", x="Mujeres", y="Edad")
+```
 
 
+```{r echo=TRUE, warning=FALSE}
 library(tidyverse)
 ggplot(data = Comidaxsexoencolumnas) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres)) +
   labs(title = "Alimentación en hombres", x="Hombres", y="Edad")
+```
 
+
+```{r echo=TRUE, warning=FALSE}
 library(tidyverse)
 ggplot(data = Comidaxsexoencolumnas) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Mujeres)) +
   labs(title = "Alimentación en mujeres", x="Mujeres", y="Edad")
+```
 
 
-
+```{r echo=TRUE, warning=FALSE}
 library(tidyverse)
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Mujeres, y= ...1, color= Mujeres))
+```
 
+
+```{r echo=TRUE, warning=FALSE}
 library(tidyverse)
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres))
 
 
 ```
+
+
+
+
+##Gráfico del paro y la alimentación  
+En este gráfico queremos observar la variación de la alimentación y el paro en hombres y mujeres  
+```{r echo=TRUE, warning=FALSE}
+library(tidyverse)
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
+  labs(title="relación paro y alimentación", x="Mujeres", y= "Hombres" ) 
+```
+
+##Gráfico del paro y la alimentación en mujeres según su edad  
+
+```{r echo=TRUE, warning=FALSE}
+library(tidyverse)
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Mujeres, y= ...1, color= Mujeres))
+```
+
+## Gráfico del paro y la alimentación en hombres según su edad
+
+```{r echo=TRUE, warning=FALSE}
+library(tidyverse)
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres))
+```
+
+# Conclusión:
+
+No hemos podido observar una gran diferencia en el paro entre hombres y mujeres, ya que esta se ve más diferenciada por la edad, es decir, el paro tiene mayor relación con a edad que con el sexo.
+En cuanto a la alimentación con los resultados obtenidos podemos observar diferencias mínimas entre hombres y mujeres, lo cual indica que la alimentación no está diferenciada por el sexo.
+La relación entre el paro y la mala alimentación existe y es notoria.
+
 

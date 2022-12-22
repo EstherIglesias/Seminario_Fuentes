@@ -37,8 +37,11 @@ library(tidyverse)
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Mujeres, y= Hombres, color= Mujeres))
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> fe1c280138dd20511f8997e99ab36cb9343b9d8b
 install.packages("ggplot2")
 library("ggplot2")
 
@@ -78,12 +81,12 @@ ggplot(data = ParoxsexoEncolumnas) +
 library(tidyverse)
 ggplot(data = Comidaxsexoencolumnas) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres)) +
-  labs(title = "Alimentación en hombres", x="Hombres", y="Edad")
+  labs(title = "Alimentación en hombres", x="Hombres", y="Alimentos")
 
 library(tidyverse)
 ggplot(data = Comidaxsexoencolumnas) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Mujeres)) +
-  labs(title = "Alimentación en mujeres", x="Mujeres", y="Edad")
+  labs(title = "Alimentación en mujeres", x="Mujeres", y="Alimentos")
 
 
 
@@ -94,4 +97,3 @@ ggplot(data = union) +
 library(tidyverse)
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres))
-
