@@ -18,15 +18,125 @@ Nuestro documento Rmarkdown.
 
 Vamos a cargar nuestros datos:
 
-```{r}
-data(input/data/Comidaxsexoencolumnas.xls)
-?Comidaxsexoencolumnas
+```{r include=FALSE}
+
+
+
+# Importación de datos xls.
+
+ #Datos de alimentación:
+
+library(readxl)
+Comidaxsexoencolumnas <- read_excel("input/data/Comidaxsexoencolumnas.xls", 
+                                    col_types = c("text", "numeric", "numeric", "numeric"))
+``` 
+
+```{r include=TRUE}                                  
+View(Comidaxsexoencolumnas)
+```
+
+```{r include=TRUE}
+ #Datos de paro:
+
+library(readxl)
+ParoxsexoEncolumnas <- read_excel("input/data/ParoxsexoEncolumnas.xls", 
+                                  col_types = c("text", "numeric", "numeric", "numeric"))
+```
+
+```{r include=TRUE}                                
+View(ParoxsexoEncolumnas)
+```
+
+```{r include=TRUE}
+#Hacemos un resumen para ver en que se diferencian nuestros datos:
+summary(ParoxsexoEncolumnas)
+summary(Comidaxsexoencolumnas)
+```
+
+
+```{r include=FALSE}
+# Unión de los datos
+library(tidyverse)
+union <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas)
+```
+
+```{r include=TRUE}
+#Hacemos un resumen de los datos que hemos obtenido al hacer la unión de los datos:
+summary(union)
+```
+
+```{r include=FALSE}
+#otra union de datos señalando las columnas que debe usar:
+library(tidyverse)
+vercomoqueda <- 
+  full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas, 
+            by = c("Ambos sexos", "Mujeres", "Hombres"))
+
+#Gráfico relación paro y alimentación:
+library(tidyverse)
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Mujeres, y= Hombres, color= Mujeres))
+```
+
+```{r include=FALSE}
+install.packages("ggplot2")
+library("ggplot2")
+```
+
+```{r echo=TRUE, warning=FALSE}
+
+library(tidyverse)
+ggplot(data = Comidaxsexoencolumnas) + 
+  geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
+  labs(title = "alimentación según sexo", x="Mujeres", y="Hombres")
+
+
+library(tidyverse)
+ggplot(data = ParoxsexoEncolumnas) + 
+  geom_point(mapping = aes( x = Mujeres, y= Hombres))+
+  labs(title = "paro según sexo", x="Mujeres", y="Hombres")
+
+
+
+library(tidyverse)
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
+  labs(title="relación paro y alimentación", x="Mujeres", y= "Hombres" ) 
+
+
+
+
+library(tidyverse)
+ggplot(data = ParoxsexoEncolumnas) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres)) +
+  labs(title = "Paro en hombres por edades", x="Hombres", y="Edad")
+
+library(tidyverse)
+ggplot(data = ParoxsexoEncolumnas) + 
+  geom_point(mapping = aes( x = Mujeres, y= ...1, color = Mujeres)) +
+  labs(title = "Paro en mujeres por edades", x="Mujeres", y="Edad")
+
+
+library(tidyverse)
+ggplot(data = Comidaxsexoencolumnas) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres)) +
+  labs(title = "Alimentación en hombres", x="Hombres", y="Edad")
+
+library(tidyverse)
+ggplot(data = Comidaxsexoencolumnas) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Mujeres)) +
+  labs(title = "Alimentación en mujeres", x="Mujeres", y="Edad")
+
+
+
+library(tidyverse)
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Mujeres, y= ...1, color= Mujeres))
+
+library(tidyverse)
+ggplot(data = union) + 
+  geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres))
 
 
 ```
 
-```{r}
-data(union)
-?union
-str(union)
-```
