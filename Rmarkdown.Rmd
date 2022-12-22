@@ -10,7 +10,11 @@ output:
 long: es-ES
 ---
 
-#Paro y Alimentación
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Paro y Alimentación
 
 Queremos comprobar si hay algún tipo de relación entre el paro y la mala alimentación.
 
@@ -18,13 +22,7 @@ Queremos comprobar si hay algún tipo de relación entre el paro y la mala alime
 
 ![](imagen_sana.jpg)
 
-Nuestro documento Rmarkdown.
-
 Vamos a cargar nuestros datos:
-```{r setup, include = FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-
-```
 
 ```{r include=FALSE}
 
@@ -36,28 +34,30 @@ Comidaxsexoencolumnas <- read_excel("input/data/Comidaxsexoencolumnas.xls",
                                     col_types = c("text", "numeric", "numeric", "numeric"))
  
 ```
-```{r include=FALSE}                                  
-View(Comidaxsexoencolumnas)
+
+```{r include=FALSE, eval=FALSE}                                  
+#View(Comidaxsexoencolumnas)
 
 ```
-```{r include=FALSE}
- #Datos de paro:
 
+```{r, warning=FALSE, message=FALSE}
+#Datos de paro:
 library(readxl)
 ParoxsexoEncolumnas <- read_excel("input/data/ParoxsexoEncolumnas.xls", 
                                   col_types = c("text", "numeric", "numeric", "numeric"))
 ```
 
-```{r include=FALSE}                                
-View(ParoxsexoEncolumnas)
+```{r eval=FALSE}                                
+#View(ParoxsexoEncolumnas)
 ```
 
-#Tabla comida
+# Tabla comida
 ```{r include=TRUE}
+# Mirarel paquete DT (https://rstudio.github.io/DT/)
 summary(Comidaxsexoencolumnas)
 ```
 
-#Tabla Paro
+# Tabla Paro 
 ```{r include=TRUE}
 summary(ParoxsexoEncolumnas)
 ```
@@ -85,11 +85,11 @@ vercomoqueda <-
 #Gráfico relación paro y alimentación:
 library(tidyverse)
 ggplot(data = union) + 
-  geom_point(mapping = aes( x = Mujeres, y= Hombres, color= Mujeres))
+  geom_point(mapping = aes( x = Mujeres, y = Hombres, color = Mujeres))
 ```
 
 ```{r include=FALSE}
-install.packages("ggplot2")
+#install.packages("ggplot2")
 library("ggplot2")
 ```
 
@@ -101,11 +101,11 @@ Con los datos obtenidos creamos disintos gráficos para poder llegar a una concl
 
 library(tidyverse)
 ggplot(data = Comidaxsexoencolumnas) + 
-  geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
-  labs(title = "alimentación según sexo", x="Mujeres", y="Hombres")
+  geom_point(mapping = aes( x = Mujeres, y = Hombres)) + 
+  labs(title = "alimentación según sexo", x = "Mujeres", y = "Hombres")
 ```
 
-##Gráfico de la alimentación en hombres   
+## Gráfico de la alimentación en hombres   
 ```{r echo=TRUE, warning=FALSE}
 library(tidyverse)
 ggplot(data = Comidaxsexoencolumnas) + 
