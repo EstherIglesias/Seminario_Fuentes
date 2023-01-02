@@ -37,6 +37,11 @@ library(tidyverse)
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Mujeres, y= Hombres, color= Mujeres))
 
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> fe1c280138dd20511f8997e99ab36cb9343b9d8b
 install.packages("ggplot2")
 library("ggplot2")
 
