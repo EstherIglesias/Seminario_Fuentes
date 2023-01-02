@@ -22,6 +22,11 @@ Queremos comprobar si hay algún tipo de relación entre el paro y la mala alime
 
 ![](imagen_sana.jpg)
 
+# Introducción
+
+# Objetivos 
+
+
 Vamos a cargar nuestros datos:
 
 ```{r include=TRUE}
