@@ -25,7 +25,7 @@ Queremos comprobar si hay algún tipo de relación entre el paro y la mala alime
 # Introducción
 
 # Objetivos 
-
+El objetivo principal es saber si existe una relación entre el paro y la alimentación. Además, también quisimos saber si los datos de paro variaban en relación al sexo de las personas o si este era similar. Por último, queríamos saber si existía una relación entre el paro y la edad y el sexo de las personas implicadas.
 
 Vamos a cargar nuestros datos:
 
