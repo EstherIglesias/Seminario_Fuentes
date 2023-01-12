@@ -97,3 +97,10 @@ ggplot(data = union) +
 library(tidyverse)
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres))
+
+library(DT)
+datatable(head(Comidaxsexoencolumnas))
+
+datatable(head(ParoxsexoEncolumnas))
+datatable(head(union))
+

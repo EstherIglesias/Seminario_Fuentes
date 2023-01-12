@@ -14,7 +14,6 @@ long: es-ES
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-# Paro y Alimentación
 
 Queremos comprobar si hay algún tipo de relación entre el paro y la mala alimentación.
 
@@ -24,19 +23,19 @@ Queremos comprobar si hay algún tipo de relación entre el paro y la mala alime
 
 # Introducción
 
-En este trabajo hemos decido buscar la relación que creemos que existe y relaciona
-el paro con una mala alimentación. Para poder realizarlo hemos comenzando buscando
-información previa en la que hayan sido previamente relacionados. Al no encontrar
-información que lo vínvule hemos decido buscar datos de paro y alimentación y 
-crear nuestra propia relación.
+En este trabajo vamos a ver existe una relación entre 
+el paro y una mala alimentación. Para poder realizarlo hemos comenzando 
+buscando información previa en la que hayan sido previamente relacionados. 
+Vemos que si se ha relacionado el desempleo con unos empeoramientos de la dieta y de los cuidados básicos de la salud. También encontramos información entre alimentación y empleo, que son dos conceptos que se retroalimentan. Por tanto vemos que las personas en paro tienen mayor riesgo de padecer una peor salud (física y mental) y una mayor alimentación basada en 'comida basura' y ultraprocesados. 
+Si hemos encontrado algo de información pero hemos decido buscar datos de paro y alimentación y crear nuestra propia relación.
 
 # Objetivos 
-El objetivo principal es saber si existe una relación entre el paro y la alimentación.
-Además, también quisimos saber si los datos de paro variaban en relación al sexo de
-las personas o si este era similar. Por último, queríamos saber si existía una 
-relación entre el paro y la edad y el sexo de las personas implicadas.
+ - Analizar si existe relación entre la alimentación y el sexo.
+ - Analizar si existe relación entre paro y sexo y edad.
+ - El objetivo principal es saber si existe una relación entre el paro y la alimentación.
 
-# Carga de paquetes/métodos(nsq poner)
+
+# Carga de paquetes/métodos
 Vamos a cargar nuestros datos, para poder trabajar con ellos ha sido necesarios 
 cargar/trabajar con los siguientes paquetes de rstudio:
 
@@ -45,18 +44,13 @@ library(readxl)
 library(dplyr)
 library(tidyverse)
 library("ggplot2")
+library(DT)
 ```
 
 ## Carga de datos
-Cargamos nuestros datos:
-```{r include=TRUE}
+Importamos los datos xls. Cargamos nuestros datos de alimentación:  
+```{r include=TRUE, warning=FALSE, message=FALSE}
 
-
-
-# Importación de datos xls.
-
-
- #Datos de alimentación:
 
 
 Comidaxsexoencolumnas <- read_excel("input/data/Comidaxsexoencolumnas.xls", 
@@ -64,27 +58,29 @@ Comidaxsexoencolumnas <- read_excel("input/data/Comidaxsexoencolumnas.xls",
 ``` 
 
 
-```{r, warning=FALSE, message=FALSE}
-#Datos de paro:
+Ahora cargamos los datos de paro:
+```{r, include=TRUE warning=FALSE, message=FALSE}
+
 ParoxsexoEncolumnas <- read_excel("input/data/ParoxsexoEncolumnas.xls", 
                                   col_types = c("text", "numeric", "numeric", "numeric"))
 ```
 
 
+Hacemos un resumen para ver en que se diferencian nuestros datos:
 ```{r include=TRUE}
-#Hacemos un resumen para ver en que se diferencian nuestros datos:
+
 summary(ParoxsexoEncolumnas)
 summary(Comidaxsexoencolumnas)
 ```
 
-
-```{r include=FALSE}
-# Unión de los datos
+Unión de los datos
+```{r include=TRUE}
 union <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas)
 ```
 
+Hacemos un resumen de los datos que hemos obtenido al hacer la unión de los datos:
 ```{r include=TRUE}
-#Hacemos un resumen de los datos que hemos obtenido al hacer la unión de los datos:
+
 summary(union)
 ```
 
@@ -110,25 +106,25 @@ ggplot(data = Comidaxsexoencolumnas) +
 
 # Tabla comida
 ```{r include=TRUE}
-# Mirarel paquete DT (https://rstudio.github.io/DT/)
-summary(Comidaxsexoencolumnas)
+
+datatable(head(Comidaxsexoencolumnas))
 ```
 
 # Tabla Paro 
 ```{r include=TRUE}
-summary(ParoxsexoEncolumnas)
+datatable(head(ParoxsexoEncolumnas))
 ```
 
 Hacemos una unión de los datos
 ```{r include=FALSE}
-# Unión de los datos
 union <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas)
 ```
 
-# Tabla de union de datos de alimentación y paro  
+# Tabla de union de datos de alimentación y paro 
+Hacemos un resumen de los datos que hemos obtenido al hacer la unión de los datos:
 ```{r include=TRUE}
-#Hacemos un resumen de los datos que hemos obtenido al hacer la unión de los datos:
-summary(union)
+
+datatable(head(union))
 ```
 
 ```{r include=FALSE}
@@ -201,14 +197,14 @@ ggplot(data = ParoxsexoEncolumnas) +
   labs(title = "Paro en mujeres por edades", x="Mujeres", y="Edad")
 ```
 
-
+## Alimentación en hombres
 ```{r echo=TRUE, warning=FALSE}
 ggplot(data = Comidaxsexoencolumnas) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres)) +
   labs(title = "Alimentación en hombres", x="Hombres", y="Edad")
 ```
 
-
+## Alimentación en mujeres
 ```{r echo=TRUE, warning=FALSE}
 ggplot(data = Comidaxsexoencolumnas) + 
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Mujeres)) +
