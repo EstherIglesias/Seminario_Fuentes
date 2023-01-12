@@ -37,7 +37,7 @@ Sí hemos encontrado algo de información, pero hemos decido buscar datos de par
 
 # Carga de paquetes/métodos
 Vamos a cargar nuestros datos, para poder trabajar con ellos ha sido necesarios 
-cargar/trabajar con los siguientes paquetes de rstudio:
+cargar con los siguientes paquetes de rstudio:
 
 ```{r message=FALSE, warning=FALSE}
 library(readxl)
