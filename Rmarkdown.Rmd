@@ -59,11 +59,7 @@ Comidaxsexoencolumnas <- read_excel("input/data/Comidaxsexoencolumnas.xls",
 
 
 Ahora cargamos los datos de paro:
-<<<<<<< HEAD
-```{r include=TRUE warning=FALSE, message=FALSE}
-=======
 ```{r, include=TRUE, warning=FALSE, message=FALSE}
->>>>>>> aa2aec18b5dd6be2fbfac4bf590260577339ca44
 
 ParoxsexoEncolumnas <- read_excel("input/data/ParoxsexoEncolumnas.xls", 
                                   col_types = c("text", "numeric", "numeric", "numeric"))
