@@ -98,10 +98,11 @@ ggplot(data = Comidaxsexoencolumnas) +
   labs(title = "alimentación según sexo", x="Mujeres", y="Hombres")
 ```
 
+# Resultados
 
-# Tablas  
+## Tablas  
 
-## Tabla alimentación
+### Tabla alimentación
 
 Creamos una tabla resumen de los datos de alimentación:
 
@@ -110,7 +111,7 @@ Creamos una tabla resumen de los datos de alimentación:
 datatable(head(Comidaxsexoencolumnas))
 ```
 
-## Tabla de paro
+### Tabla de paro
 
 Creamos una tabla resumen de los datos de paro:
 
@@ -118,7 +119,7 @@ Creamos una tabla resumen de los datos de paro:
 datatable(head(ParoxsexoEncolumnas))
 ```
 
-## Tabla de union de datos de alimentación y paro 
+### Tabla de union de datos de alimentación y paro 
 
 Hacemos una unión de los datos
 
@@ -146,11 +147,11 @@ ggplot(data = union) +
 ```
 
 
-# GRÁFICOS
+## Gráficos
 
 Con los datos obtenidos creamos disintos gráficos para poder llegar a una conclusión.
 
-## Gráfico de la alimentación en relación al sexo  
+### Gráfico de la alimentación en relación al sexo  
 
 ```{r echo=TRUE, warning=FALSE}
 
@@ -165,7 +166,7 @@ Para comprobarlo, hemos creado los siguientes gráficos que relacionan la alimen
 con un sexo en específico, primero en hombres y luego en mujeres. Gracias a estos
 gráficos observamos la gran similitud que hay en la alimentación de hombres y mujeres.
 
-## Gráfico de la alimentación en hombres  
+### Gráfico de la alimentación en hombres  
 
 ```{r echo=TRUE, warning=FALSE}
 ggplot(data = Comidaxsexoencolumnas) + 
@@ -173,7 +174,7 @@ ggplot(data = Comidaxsexoencolumnas) +
   labs(title = "Alimentación en hombres", x="Hombres", y="Alimentos")
 ```
 
-## Gráfico de la alimentación en mujeres  
+### Gráfico de la alimentación en mujeres  
 
 ```{r echo=TRUE, warning=FALSE}
 ggplot(data = Comidaxsexoencolumnas) + 
@@ -182,7 +183,7 @@ ggplot(data = Comidaxsexoencolumnas) +
 ```
 
 
-## Gráfico del paro en relación al sexo  
+### Gráfico del paro en relación al sexo  
   
 ```{r echo=TRUE, warning=FALSE}
 ggplot(data = ParoxsexoEncolumnas) + 
@@ -200,7 +201,7 @@ Debido a esto, hemos decido realizar una separación en dos gráficos, uno para 
 y otro para mujeres. Añadiendo a esta relación el factor de la edad para comprobar si el paro
 se ve afectado por ella.
 
-## Gráfico del paro en hombres en relación con su edad  
+### Gráfico del paro en hombres en relación con su edad  
 
 ```{r echo=TRUE, warning=FALSE}
 ggplot(data = ParoxsexoEncolumnas) + 
@@ -208,7 +209,7 @@ ggplot(data = ParoxsexoEncolumnas) +
   labs(title = "Paro en hombres por edades", x="Hombres", y="Edad")
 ```
 
-## Gráfico del paro en mujeres en relación a su edad  
+### Gráfico del paro en mujeres en relación a su edad  
 ```{r echo=TRUE, warning=FALSE}
 ggplot(data = ParoxsexoEncolumnas) + 
   geom_point(mapping = aes( x = Mujeres, y= ...1, color = Mujeres)) +
@@ -231,7 +232,7 @@ ggplot(data = union) +
 ```
 
 
-## Gráfico del paro y la alimentación 
+### Gráfico del paro y la alimentación 
 
 ```{r echo=TRUE, warning=FALSE}
 ggplot(data = union) + 
@@ -245,14 +246,14 @@ Además, hemos decidio crear este gráfico de manera indivual para hombres y muj
 en los cuales relacionamos el paro y la alimentación añadiendo el factor de la edad,
 pues hemos visto que el paro no se relacionaba con el sexo sino con la edad.
 
-## Gráfico del paro y la alimentación en mujeres según su edad  
+### Gráfico del paro y la alimentación en mujeres según su edad  
 
 ```{r echo=TRUE, warning=FALSE}
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Mujeres, y= ...1, color= Mujeres))
 ```
 
-## Gráfico del paro y la alimentación en hombres según su edad  
+### Gráfico del paro y la alimentación en hombres según su edad  
 
 ```{r echo=TRUE, warning=FALSE}
 ggplot(data = union) + 
