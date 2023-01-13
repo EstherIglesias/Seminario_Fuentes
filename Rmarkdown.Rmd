@@ -35,7 +35,10 @@ Sí hemos encontrado algo de información, pero hemos decido buscar datos de par
  - El objetivo principal es saber si existe una relación entre el paro y la alimentación.
 
 
-# Carga de paquetes/métodos
+# Métodos 
+
+## Carga de paquetes 
+
 Vamos a cargar nuestros datos, para poder trabajar con ellos ha sido necesarios 
 cargar con los siguientes paquetes de rstudio:
 
@@ -47,8 +50,11 @@ library("ggplot2")
 library(DT)
 ```
 
-## Carga de datos
-Importamos los datos xls. Cargamos nuestros datos de alimentación:  
+## Carga de datos  
+
+Importamos los datos xls. 
+Cargamos nuestros datos de alimentación:  
+
 ```{r include=TRUE, warning=FALSE, message=FALSE}
 
 
@@ -57,15 +63,18 @@ Comidaxsexoencolumnas <- read_excel("input/data/Comidaxsexoencolumnas.xls",
                                     col_types = c("text", "numeric", "numeric", "numeric"))
 ``` 
 
-
 Ahora cargamos los datos de paro:
+
 ```{r, include=TRUE, warning=FALSE, message=FALSE}
 
 ParoxsexoEncolumnas <- read_excel("input/data/ParoxsexoEncolumnas.xls", 
                                   col_types = c("text", "numeric", "numeric", "numeric"))
 ```
 
-Unión de los datos
+Realizamos una unión de los datos, al encontrarnos con el mismo número de columnas
+y filas en cada archivo respectivamente, hemos decidio realizar esta unión a través
+de un full join.
+
 ```{r include=TRUE, message=FALSE}
 union <- full_join(x= ParoxsexoEncolumnas, y=Comidaxsexoencolumnas)
 ```
@@ -90,8 +99,9 @@ ggplot(data = Comidaxsexoencolumnas) +
 ```
 
 
+# Tablas  
 
-# Tabla alimentación
+## Tabla alimentación
 
 Creamos una tabla resumen de los datos de alimentación:
 
@@ -100,7 +110,7 @@ Creamos una tabla resumen de los datos de alimentación:
 datatable(head(Comidaxsexoencolumnas))
 ```
 
-# Tabla Paro 
+## Tabla de paro
 
 Creamos una tabla resumen de los datos de paro:
 
@@ -108,7 +118,7 @@ Creamos una tabla resumen de los datos de paro:
 datatable(head(ParoxsexoEncolumnas))
 ```
 
-# Tabla de union de datos de alimentación y paro 
+## Tabla de union de datos de alimentación y paro 
 
 Hacemos una unión de los datos
 
@@ -136,7 +146,8 @@ ggplot(data = union) +
 ```
 
 
-# GRÁFICOS  
+# GRÁFICOS
+
 Con los datos obtenidos creamos disintos gráficos para poder llegar a una conclusión.
 
 ## Gráfico de la alimentación en relación al sexo  
@@ -147,6 +158,12 @@ ggplot(data = Comidaxsexoencolumnas) +
   geom_point(mapping = aes( x = Mujeres, y = Hombres)) + 
   labs(title = "alimentación según sexo", x = "Mujeres", y = "Hombres")
 ```
+
+Como podemos observar en el gráfico anterior, no existe una gran diferencia alimentaria 
+entre hombres y mujeres. 
+Para comprobarlo, hemos creado los siguientes gráficos que relacionan la alimentación
+con un sexo en específico, primero en hombres y luego en mujeres. Gracias a estos
+gráficos observamos la gran similitud que hay en la alimentación de hombres y mujeres.
 
 ## Gráfico de la alimentación en hombres  
 
@@ -173,14 +190,15 @@ ggplot(data = ParoxsexoEncolumnas) +
   labs(title = "paro según sexo", x="Mujeres", y="Hombres")
 ```
 
-## Gráfico de la relacióne entre el paro y la alimentación  
+En el gráfico anterior podemos ver la relación existente entre el paro y el sexo
+de la persona implicada. En un inicio, pensabamos que ibamos a encontrar una diferencia
+mayor, ya que, esta apenas es apreciable. Esto puede deberse a que, a pesar de existir
+una brecha salarial entre hombres y mujeres, a la hora del paro no existe tal 
+diferencia entre sexos.
 
-
-```{r echo=TRUE, warning=FALSE}
-ggplot(data = union) + 
-  geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
-  labs(title="relación paro y alimentación", x="Mujeres", y= "Hombres" )
-```
+Debido a esto, hemos decido realizar una separación en dos gráficos, uno para hombres
+y otro para mujeres. Añadiendo a esta relación el factor de la edad para comprobar si el paro
+se ve afectado por ella.
 
 ## Gráfico del paro en hombres en relación con su edad  
 
@@ -197,22 +215,8 @@ ggplot(data = ParoxsexoEncolumnas) +
   labs(title = "Paro en mujeres por edades", x="Mujeres", y="Edad")
 ```
 
-## Gráfico de alimentación en hombres  
-
-```{r echo=TRUE, warning=FALSE}
-ggplot(data = Comidaxsexoencolumnas) + 
-  geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres)) +
-  labs(title = "Alimentación en hombres", x="Hombres", y="Edad")
-```
-
-## Gráfico de alimentación en mujeres  
-
-```{r echo=TRUE, warning=FALSE}
-ggplot(data = Comidaxsexoencolumnas) + 
-  geom_point(mapping = aes( x = Hombres, y= ...1, color= Mujeres)) +
-  labs(title = "Alimentación en mujeres", x="Mujeres", y="Edad")
-```
-
+Con los resultados obtenido en ambos gráficos, podemos afirmar que el paro si está
+diferenciado por el sexo.
 
 ```{r echo=TRUE, warning=FALSE, include=FALSE}
 ggplot(data = union) + 
@@ -229,12 +233,17 @@ ggplot(data = union) +
 
 ## Gráfico del paro y la alimentación 
 
-En este gráfico queremos observar la variación de la alimentación y el paro en hombres y mujeres  
 ```{r echo=TRUE, warning=FALSE}
 ggplot(data = union) + 
   geom_point(mapping = aes( x = Mujeres, y= Hombres)) + 
   labs(title="relación paro y alimentación", x="Mujeres", y= "Hombres" ) 
 ```
+
+Finalmente, hemos creado un gráfico en el que podemos observar la variación de
+la alimentación y el paro, tanto en hombres como en mujeres.
+Además, hemos decidio crear este gráfico de manera indivual para hombres y mujeres,
+en los cuales relacionamos el paro y la alimentación añadiendo el factor de la edad,
+pues hemos visto que el paro no se relacionaba con el sexo sino con la edad.
 
 ## Gráfico del paro y la alimentación en mujeres según su edad  
 
@@ -250,11 +259,17 @@ ggplot(data = union) +
   geom_point(mapping = aes( x = Hombres, y= ...1, color= Hombres))
 ```
 
-# Conclusión:
+# Conclusión
 
-No hemos podido observar una gran diferencia en el paro entre hombres y mujeres, ya que, esta se ve más diferenciada por la edad, es decir, el paro tiene mayor relación con a edad que con el sexo.
+En cuanto a la alimentación, con los resultados obtenidos podemos observar diferencias
+mínimas entre hombres y mujeres, lo cual indica que la alimentación no está diferenciada
+por el sexo.
 
-En cuanto a la alimentación con los resultados obtenidos podemos observar diferencias mínimas entre hombres y mujeres, lo cual indica que la alimentación no está diferenciada por el sexo.
-La relación entre el paro y la mala alimentación existe y es notoria.
+No hemos podido observar una gran diferencia en el paro entre hombres y mujeres,
+ya que, esta se ve más diferenciada por la edad, es decir, el paro tiene mayor 
+relación con a edad que con el sexo.
+
+Finalmente, hemos descubierto que la relación entre el paro y la mala alimentación
+existe, y es notoria.
 
 
